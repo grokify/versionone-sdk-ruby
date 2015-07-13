@@ -22,7 +22,7 @@ It currently offers the following capabilities:
 
 ## Installing
 
-Download and install versionone_sdk with the following:
+Download and install `versionone_sdk` with the following:
 
 ```bash
 $ gem install versionone_sdk
@@ -110,20 +110,20 @@ $ yard server -g
 3. Inflation
  - Some values are inflated. Currently, AssetState is used to derive AssetState.Name as defined here: https://community.versionone.com/Developers/Developer-Library/Concepts/Asset_State
 4. Tracking Properties
- - In addition to the standard VersionOne properties, this modules adds the following generic properties for tracking: :__id__sObjectDomain, :__id__sObjectType, :__id__iObjectId, :__id__sObjectUrl. The object domain is set to 'Versionone', while object type and object id correspond to VersionOne Asset types and ids. The URL is the full URL for the resource including protocol, host and port.
+ - In addition to the standard VersionOne properties, this modules adds the following generic properties for tracking: `:__id__sObjectDomain`, `:__id__sObjectType`, `:__id__iObjectId`, `:__id__sObjectUrl`. The object domain is set to 'Versionone', while object type and object id correspond to VersionOne Asset types and ids. The URL is the full URL for the resource including protocol, host and port.
 
 ## Change Log
 
 - **2014-03-24**: 0.1.0
   - Update JSON representation to use array for multiple values and string for single values for both attribute and relation XML tags. Previously relation tags would be converted to arrays even if there was only a single element. This change is not backward compatible.
-  - Update control properties format from __id__#{property} to _#{property}__id. This change is not backward compatible.
+  - Update control properties format from `__id__#{property}` to `_#{property}__id`. This change is not backward compatible.
 - **2014-03-20**: 0.0.4
-  - Fix for VersiononeSdk::Update::updateAsset
+  - Fix for `VersiononeSdk::Update::updateAsset`
 - **2014-03-20**: 0.0.3
   - Add ability to retrieve a single asset using an OID token or Number
-  - Add VersiononeSdk::Update to support updating Assets
+  - Add `VersiononeSdk::Update` to support updating Assets
 - **2014-03-17**: 0.0.2
-  - Add VersiononeSdk::Asset object to support value inflation, starting with AssetState.Name
+  - Add `VersiononeSdk::Asset` object to support value inflation, starting with AssetState.Name
 - **2014-03-16**: 0.0.1
   - Initial release
 
