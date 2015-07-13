@@ -1,6 +1,13 @@
 VersionOne SDK - A Ruby SDK for the VersionOne REST API
 =======================================================
 
+[![Gem Version](https://badge.fury.io/rb/versionone_sdk.svg)](http://badge.fury.io/rb/versionone_sdk)
+[![Build Status](https://img.shields.io/travis/grokify/versionone-sdk-ruby/master.svg)](https://travis-ci.org/grokify/versionone-sdk-ruby)
+[![Code Climate](https://codeclimate.com/github/grokify/versionone-sdk-ruby/badges/gpa.svg)](https://codeclimate.com/github/grokify/versionone-sdk-ruby)
+[![Coverage Status](https://coveralls.io/repos/grokify/versionone-sdk-ruby/badge.svg?branch=master)](https://coveralls.io/r/grokify/versionone-sdk-ruby?branch=master)
+[![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/versionone_sdk/)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/grokify/versionone-sdk-ruby/master/LICENSE.txt)
+
 Synopsis
 --------
 
@@ -19,11 +26,14 @@ Installing
 
 Download and install versionone_sdk with the following:
 
-    gem install versionone_sdk
+```bash
+$ gem install versionone_sdk
+```
 
 #Examples
 ---------
 
+```ruby
     require 'versionone_sdk'
 
     params      =  {
@@ -81,14 +91,17 @@ Download and install versionone_sdk with the following:
       { :value => "Member:1000", :act => "add" },    \
       { :value => "Member:1001", :act => "remove " } \
     ],:multi_relationship)
+```
 
 #Documentation
 --------------
 
 This gem is 100% documented with YARD, an exceptional documentation library. To see documentation for this, and all the gems installed on your system use:
 
-    $ gem install yard
-    $ yard server -g
+```bash
+$ gem install yard
+$ yard server -g
+```
 
 Notes
 -----
@@ -123,16 +136,16 @@ Notes
 
 VersionOne API Documentation
 
-http://community.versionone.com/Developers/Developer-Library/Documentation/API
+* http://community.versionone.com/Developers/Developer-Library/Documentation/API
 
 VersionOne API Documentation for Updating an Asset
 
-https://community.versionone.com/Developers/Developer-Library/Recipes/Update_an_Asset
+* https://community.versionone.com/Developers/Developer-Library/Recipes/Update_an_Asset
 
 #Copyright and License
 ----------------------
 
-VersiononeSdk &copy; 2014 by [John Wang](mailto:johncwang@gmail.com).
+VersiononeSdk &copy; 2014-2015 by [John Wang](mailto:johncwang@gmail.com).
 
 VersiononeSdk is licensed under the MIT license. Please see the LICENSE document for more information.
 
