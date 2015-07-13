@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = 'A Ruby SDK for the VersionOne REST API'
   s.files       = [
     'CHANGELOG.md',
-    'LICENSE',
+    'LICENSE.txt',
     'README.md',
     'Rakefile',
     'VERSION',
