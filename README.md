@@ -28,6 +28,8 @@ Download and install versionone_sdk with the following:
 $ gem install versionone_sdk
 ```
 
+This gem uses `nokogiri` which requires Ruby >= 1.9.2.
+
 ## Examples
 
 ```ruby
