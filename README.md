@@ -17,7 +17,7 @@ VersionOne currently offers SDKs in Java, .NET, Python and JavaScript but not in
 It currently offers the following capabilities:
 
 1. Ability to retrieve and parse all Assets of a certain type to JSON (via JsonDoc)
-2. Ability to query Assets transparently using Asset OID Tokens (e.g. "Story:1") or Asset Numbers (e.g. "B-1").
+2. Ability to query Assets transparently using Asset OID Tokens (e.g. `Story:1`) or Asset Numbers (e.g. `B-1`).
 3. Ability to update Assets using Ruby without needing to manually create XML.
 
 ## Installing
