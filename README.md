@@ -8,8 +8,7 @@ VersionOne SDK - A Ruby SDK for the VersionOne REST API
 [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/versionone_sdk/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/grokify/versionone-sdk-ruby/master/LICENSE.txt)
 
-Synopsis
---------
+## Synopsis
 
 This is a VersionOne SDK in Ruby that accesses the VersionOne REST API.
 
@@ -21,8 +20,7 @@ It currently offers the following capabilities:
 2. Ability to query Assets transparently using Asset OID Tokens (e.g. "Story:1") or Asset Numbers (e.g. "B-1").
 3. Ability to update Assets using Ruby without needing to manually create XML.
 
-Installing
-----------
+## Installing
 
 Download and install versionone_sdk with the following:
 
@@ -30,8 +28,7 @@ Download and install versionone_sdk with the following:
 $ gem install versionone_sdk
 ```
 
-#Examples
----------
+## Examples
 
 ```ruby
 require 'versionone_sdk'
@@ -93,8 +90,7 @@ v1client.updateAsset("Scope",0,"Members",[       \
 ],:multi_relationship)
 ```
 
-#Documentation
---------------
+## Documentation
 
 This gem is 100% documented with YARD, an exceptional documentation library. To see documentation for this, and all the gems installed on your system use:
 
@@ -103,8 +99,7 @@ $ gem install yard
 $ yard server -g
 ```
 
-Notes
------
+## Notes
 
 1. Integer Values
  - Integer values for Order and AssetState are converted from strings to integers.
@@ -115,8 +110,7 @@ Notes
 4. Tracking Properties
  - In addition to the standard VersionOne properties, this modules adds the following generic properties for tracking: :__id__sObjectDomain, :__id__sObjectType, :__id__iObjectId, :__id__sObjectUrl. The object domain is set to 'Versionone', while object type and object id correspond to VersionOne Asset types and ids. The URL is the full URL for the resource including protocol, host and port.
 
-#Change Log
------------
+## Change Log
 
 - **2014-03-24**: 0.1.0
   - Update JSON representation to use array for multiple values and string for single values for both attribute and relation XML tags. Previously relation tags would be converted to arrays even if there was only a single element. This change is not backward compatible.
@@ -131,8 +125,11 @@ Notes
 - **2014-03-16**: 0.0.1
   - Initial release
 
-#Links
-------
+## Links
+
+Project Repo
+
+* https://github.com/grokify/versionone-sdk-ruby
 
 VersionOne API Documentation
 
@@ -142,14 +139,12 @@ VersionOne API Documentation for Updating an Asset
 
 * https://community.versionone.com/Developers/Developer-Library/Recipes/Update_an_Asset
 
-#Copyright and License
-----------------------
+## Copyright and License
 
 VersiononeSdk &copy; 2014-2015 by [John Wang](mailto:johncwang@gmail.com).
 
 VersiononeSdk is licensed under the MIT license. Please see the LICENSE document for more information.
 
-Warranty
---------
+## Warranty
 
 This software is provided "as is" and without any express or implied warranties, including, without limitation, the implied warranties of merchantibility and fitness for a particular purpose.
