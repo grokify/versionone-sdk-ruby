@@ -1,6 +1,8 @@
 CHANGELOG
 ---------
-
+- **2015-09-14**: 0.1.1
+  - Update `README.md`
+  - Add Travis CI, Code Climate, Coveralls support
 - **2014-03-24**: 0.1.0
   - Update JSON representation to use Array for multiple values and String for single values for both Attribute and Relation tags. Previously Relation tags would be converted to arrays even if there was only a single element. This change is not backward compatible.
 - **2014-03-20**: 0.0.4
