@@ -114,18 +114,7 @@ $ yard server -g
 
 ## Change Log
 
-- **2014-03-24**: 0.1.0
-  - Update JSON representation to use array for multiple values and string for single values for both attribute and relation XML tags. Previously relation tags would be converted to arrays even if there was only a single element. This change is not backward compatible.
-  - Update control properties format from `__id__#{property}` to `_#{property}__id`. This change is not backward compatible.
-- **2014-03-20**: 0.0.4
-  - Fix for `VersiononeSdk::Update::updateAsset`
-- **2014-03-20**: 0.0.3
-  - Add ability to retrieve a single asset using an OID token or Number
-  - Add `VersiononeSdk::Update` to support updating Assets
-- **2014-03-17**: 0.0.2
-  - Add `VersiononeSdk::Asset` object to support value inflation, starting with AssetState.Name
-- **2014-03-16**: 0.0.1
-  - Initial release
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Links
 
@@ -145,7 +134,7 @@ VersionOne API Documentation for Updating an Asset
 
 VersiononeSdk &copy; 2014-2015 by [John Wang](mailto:johncwang@gmail.com).
 
-VersiononeSdk is licensed under the MIT license. Please see the LICENSE document for more information.
+VersiononeSdk is licensed under the MIT license. Please see the [LICENSE.txt](LICENSE.txt) document for more information.
 
 ## Warranty
 
