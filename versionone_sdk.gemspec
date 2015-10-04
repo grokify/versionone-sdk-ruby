@@ -10,6 +10,7 @@ Gem::Specification.new do |s|
   s.summary     = 'VersionOne SDK - A Ruby SDK for the VersionOne REST API'
   s.license     = 'MIT'
   s.description = 'A Ruby SDK for the VersionOne REST API'
+  s.licenses    = ['MIT']
   s.files       = [
     'CHANGELOG.md',
     'LICENSE.txt',
