@@ -4,7 +4,7 @@ VersionOne SDK - A Ruby SDK for the VersionOne REST API
 [![Gem Version](https://badge.fury.io/rb/versionone_sdk.svg)](http://badge.fury.io/rb/versionone_sdk)
 [![Build Status](https://img.shields.io/travis/grokify/versionone-sdk-ruby/master.svg)](https://travis-ci.org/grokify/versionone-sdk-ruby)
 [![Code Climate](https://codeclimate.com/github/grokify/versionone-sdk-ruby/badges/gpa.svg)](https://codeclimate.com/github/grokify/versionone-sdk-ruby)
-[![Coverage Status](https://coveralls.io/repos/grokify/versionone-sdk-ruby/badge.svg?branch=master)](https://coveralls.io/r/grokify/versionone-sdk-ruby?branch=master)
+[![Downloads][downloads-svg]][downloads-link]
 [![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/versionone_sdk/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/grokify/versionone-sdk-ruby/master/LICENSE.txt)
 
@@ -132,10 +132,13 @@ VersionOne API Documentation for Updating an Asset
 
 ## Copyright and License
 
-VersiononeSdk &copy; 2014-2015 by [John Wang](mailto:johncwang@gmail.com).
+VersiononeSdk &copy; 2014-2016 by [John Wang](mailto:johncwang@gmail.com).
 
 VersiononeSdk is licensed under the MIT license. Please see the [LICENSE.txt](LICENSE.txt) document for more information.
 
 ## Warranty
 
 This software is provided "as is" and without any express or implied warranties, including, without limitation, the implied warranties of merchantibility and fitness for a particular purpose.
+
+ [downloads-svg]: http://ruby-gem-downloads-badge.herokuapp.com/versionone_sdk
+ [downloads-link]: https://rubygems.org/gems/versionone_sdk
