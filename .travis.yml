@@ -2,9 +2,28 @@ sudo: false
 cache: bundler
 language: ruby
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.0
-  - 2.1.6
-  - 2.2.0
-  - 2.2.2
+- 2.3.0
+- 2.2.4
+- 2.2.0
+- 2.1.8
+- 2.1.0
+- 2.0.0-p648
+- 2.0.0
+- 1.9.3
+- 1.8.7
+- ruby
+- ruby-head
+- jruby
+- jruby-19mode
+- jruby-head
+- rbx-2
+- rbx-head
+matrix:
+  fast_finish: true
+  allow_failures:
+  - rvm: ruby-head
+  - rvm: jruby-head
+  - rvm: rbx-head
+notifications:
+  slack:
+    secure: CswW9bKJucC6VlpZG6lH5LekadJKwKpKbdpnRYSKZd06XhjRnU5iy19yg7RljzMqjPxaT8MP6g8gPEi9I3L/ZDzTjj2zskfHHi5RxqiJeoc5lvSAVegnNUe+JlCGlE6nNQ4pBmMFi6pmanXPu23xfaXrG6GrMVufZfqkH6bvoVamC6vreMRwVSBdpe+JsPScR8tH89KoZNur0xHDNt6y425caAD0RuCrWbXi1ityC70S0WllXgVMHSGXze2PpUZE4pEaqZXpSF/grncQiokW/c7diPz34Yp5BTBunzaNk7z5Aq0u1Ux+PV7FJ3mrKwcBZuuRJaRMPjF+qNNQg7k339xG+LRqHA9kLdSY45KeVWqfcCIU5vObUvNMb/2de4VVeA85OO/AzoyF9eHeIA05O5Z6wNfD56CXMDrkiwr4xuWopL6YsKQuW803NAgBQnns/nmXPmqf1larOBcavzzfJ7MJo8yC2qFKmkHhNctM+8A17L8WYmjtb5Kl4ZxvFfT3fL9rjEswGNl4N9KJVSLCVHxbAr12jyUuGTFflZJG5LkXXf5h7cPuzgy1O6opveOPiMlAQeHpNKufxmyOoaTzbJrtjUQsK2uY0bbdQvifekmRTgGM9FIk0Ftniz9Q40IV4qggLdt5bn2N1OiMKRJ7+JmdAOogjPrm7qs6kSuwP6E=
