@@ -3,6 +3,7 @@ VersionOne SDK - A Ruby SDK for the VersionOne REST API
 
 [![Gem Version][gem-version-svg]][gem-version-link]
 [![Build Status][build-status-svg]][build-status-link]
+[![Coverage Status][coverage-status-svg]][coverage-status-link]
 [![Dependency Status][dependency-status-svg]][dependency-status-link]
 [![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
 [![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
@@ -148,6 +149,8 @@ This software is provided "as is" and without any express or implied warranties,
  [gem-version-link]: http://badge.fury.io/rb/versionone_sdk
  [build-status-svg]: https://api.travis-ci.org/grokify/versionone-sdk-ruby.svg?branch=master
  [build-status-link]: https://travis-ci.org/grokify/versionone-sdk-ruby
+ [coverage-status-svg]: https://coveralls.io/repos/grokify/versionone-sdk-ruby/badge.svg?branch=master
+ [coverage-status-link]: https://coveralls.io/r/grokify/versionone-sdk-ruby?branch=master
  [dependency-status-svg]: https://gemnasium.com/grokify/versionone-sdk-ruby.svg
  [dependency-status-link]: https://gemnasium.com/grokify/versionone-sdk-ruby
  [codeclimate-status-svg]: https://codeclimate.com/github/grokify/versionone-sdk-ruby/badges/gpa.svg
