@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/**/*'] + Dir['test/**/*'] \
                 + Dir['[A-Z]*'].grep(/^[A-Z]/).select {|s|/Gemfile\.lock/ !~ s}
   s.add_dependency 'faraday', '~> 0', '>= 0'
-  s.add_dependency 'jsondoc', '~> 0', '>= 0.0.4'
+  s.add_dependency 'jsondoc', '~> 0.1', '>= 0.1.2'
   s.add_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
   s.require_path = 'lib'
 end
