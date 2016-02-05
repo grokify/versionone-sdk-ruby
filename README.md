@@ -1,12 +1,14 @@
 VersionOne SDK - A Ruby SDK for the VersionOne REST API
 =======================================================
 
-[![Gem Version](https://badge.fury.io/rb/versionone_sdk.svg)](http://badge.fury.io/rb/versionone_sdk)
-[![Build Status](https://img.shields.io/travis/grokify/versionone-sdk-ruby/master.svg)](https://travis-ci.org/grokify/versionone-sdk-ruby)
-[![Code Climate](https://codeclimate.com/github/grokify/versionone-sdk-ruby/badges/gpa.svg)](https://codeclimate.com/github/grokify/versionone-sdk-ruby)
+[![Gem Version][gem-version-svg]][gem-version-link]
+[![Build Status][build-status-svg]][build-status-link]
+[![Dependency Status][dependency-status-svg]][dependency-status-link]
+[![Code Climate][codeclimate-status-svg]][codeclimate-status-link]
+[![Scrutinizer Code Quality][scrutinizer-status-svg]][scrutinizer-status-link]
 [![Downloads][downloads-svg]][downloads-link]
-[![Docs](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/versionone_sdk/)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/grokify/versionone-sdk-ruby/master/LICENSE.txt)
+[![Docs][docs-rubydoc-svg]][docs-rubydoc-link]
+[![License][license-svg]][license-link]
 
 ## Synopsis
 
@@ -20,11 +22,20 @@ It currently offers the following capabilities:
 2. Ability to query Assets transparently using Asset OID Tokens (e.g. `Story:1`) or Asset Numbers (e.g. `B-1`).
 3. Ability to update Assets using Ruby without needing to manually create XML.
 
-## Installing
+## Installation
 
-Download and install `versionone_sdk` with the following:
+### Via Bundler
 
-```bash
+Add 'versionone_sdk' to `Gemfile` and then run `bundle`:
+
+```sh
+$ echo "gem 'versionone_sdk'" >> Gemfile
+$ bundle
+```
+
+### Via RubyGems
+
+```sh
 $ gem install versionone_sdk
 ```
 
@@ -35,13 +46,13 @@ This gem uses `nokogiri` which requires Ruby >= 1.9.2.
 ```ruby
 require 'versionone_sdk'
 
-params      =  {
-  :hostname => 'www1.v1host.com',
-  :instance => 'myinstance',
-  :username => 'myusername',
-  :password => 'mypassword',
-  :port     => 443,
-  :protocol => 'https'
+params = {
+  hostname: 'www1.v1host.com',
+  instance: 'myinstance',
+  username: 'myusername',
+  password: 'mypassword',
+  port: 443,
+  protocol: 'https'
 }
 
 v1client = VersiononeSdk::Client.new(params)
@@ -56,18 +67,15 @@ end
 
 # Retrieve a single asset using an Asset OID Token
 # Returns a VersiononeSdk::Asset object
-
 asset = v1client.getAsset("Story:1")
 asset = v1client.getAsset("Story",1)
 
 # Retrieve a single asset using an Asset Number
-
 asset = v1client.getAsset("B-1")
 asset = v1client.getAsset("B",1)
 
 # Updating an asset with a simple attribute
 # Returns a Faraday::Response object
-
 v1client.updateAsset("Member",20,"Phone","555-555-1212")
 v1client.updateAsset("Member",20,"Phone",{:value=>"555-555-1212",:act=>"set"})
 v1client.updateAsset("Member",20,"Phone",{:value=>"555-555-1212",:act=>"set"},\
@@ -75,17 +83,14 @@ v1client.updateAsset("Member",20,"Phone",{:value=>"555-555-1212",:act=>"set"},\
 )
 
 # Updating an asset with a single-value relationship:
-
 v1client.updateAsset("Scope",0,"Owner","Member:20")
 v1client.updateAsset("Scope",0,"Owner",{:value=>"Member:20",:act=>"set"})
 v1client.updateAsset("Scope",0,"Owner",{:value=>"Member:20",:act=>"set"},:single_relationship)
 
 # Updating an asset with a multi-value relationship: adding members
-
 v1client.updateAsset("Scope",0,"Members",["Member:1000","Member:1001"],:multi_relationship)
 
 # Updating an asset with a multi-value relationship: adding and removing members
-
 v1client.updateAsset("Scope",0,"Members",[       \
   { :value => "Member:1000", :act => "add" },    \
   { :value => "Member:1001", :act => "remove " } \
@@ -140,5 +145,19 @@ VersiononeSdk is licensed under the MIT license. Please see the [LICENSE.txt](LI
 
 This software is provided "as is" and without any express or implied warranties, including, without limitation, the implied warranties of merchantibility and fitness for a particular purpose.
 
+ [gem-version-svg]: https://badge.fury.io/rb/versionone_sdk.svg
+ [gem-version-link]: http://badge.fury.io/rb/versionone_sdk
+ [build-status-svg]: https://api.travis-ci.org/grokify/versionone-sdk-ruby.svg?branch=master
+ [build-status-link]: https://travis-ci.org/grokify/versionone-sdk-ruby
+ [dependency-status-svg]: https://gemnasium.com/grokify/versionone-sdk-ruby.svg
+ [dependency-status-link]: https://gemnasium.com/grokify/versionone-sdk-ruby
+ [codeclimate-status-svg]: https://codeclimate.com/github/grokify/versionone-sdk-ruby/badges/gpa.svg
+ [codeclimate-status-link]: https://codeclimate.com/github/grokify/versionone-sdk-ruby
+ [scrutinizer-status-svg]: https://scrutinizer-ci.com/g/grokify/versionone-sdk-ruby/badges/quality-score.png?b=master
+ [scrutinizer-status-link]: https://scrutinizer-ci.com/g/grokify/versionone-sdk-ruby/?branch=master
  [downloads-svg]: http://ruby-gem-downloads-badge.herokuapp.com/versionone_sdk
  [downloads-link]: https://rubygems.org/gems/versionone_sdk
+ [docs-rubydoc-svg]: https://img.shields.io/badge/docs-rubydoc-blue.svg
+ [docs-rubydoc-link]: http://www.rubydoc.info/gems/versionone_sdk/
+ [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
+ [license-link]: https://github.com/grokify/versionone-sdk-ruby/blob/master/LICENSE.txt
