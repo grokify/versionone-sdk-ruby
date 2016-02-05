@@ -2,7 +2,6 @@ require 'nokogiri'
 
 module VersiononeSdk
   class Update
-
     def initialize(oClient=nil)
       @oClient        = oClient
       @dTagTypes      = {:simple_attribute=>1,:single_relationship=>1,:multi_relationship=>1}
@@ -139,6 +138,5 @@ module VersiononeSdk
         } }
       return oBuilder.to_xml
     end
-
   end
 end

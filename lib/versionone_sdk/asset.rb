@@ -1,7 +1,6 @@
 require 'jsondoc'
 
 module VersiononeSdk
-
   # VersiononeSdk::Asset class is a JsonDoc::Document subclass that includes
   # the #inflateNames method to add AssetState.Name based on the VersionOne
   # classifications avaiable at: https://community.versionone.com/Developers/Developer-Library/Concepts/Asset_State
@@ -56,6 +55,5 @@ module VersiononeSdk
         end
       end
     end
-
   end
 end

@@ -95,6 +95,5 @@ module VersiononeSdk
       xxPropVal     = nil if xxPropVal == ''
       return xxPropVal
     end
-
   end
 end

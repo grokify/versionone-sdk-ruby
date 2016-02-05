@@ -4,7 +4,6 @@ require 'versionone_sdk/parser_xml_assets'
 
 module VersiononeSdk
   class Client
-
     attr_accessor :oFaraday
     attr_accessor :sInstance
 
@@ -145,6 +144,5 @@ module VersiononeSdk
       sBaseUrl  += ':' + iPort.to_s if iPort != 80
       return sBaseUrl
     end
-
   end
 end
