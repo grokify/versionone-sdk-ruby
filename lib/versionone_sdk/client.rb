@@ -9,15 +9,15 @@ module VersiononeSdk
 
     def initialize(dOptions={})
       iPort        = iPort.to_i if iPort.is_a?(String)
-      @sProtocol   = dOptions.has_key?(:protocol) && dOptions[:protocol] \
+      @sProtocol   = dOptions.key?(:protocol) && dOptions[:protocol] \
                    ? dOptions[:protocol]    : 'https'
-      @sHostname   = dOptions.has_key?(:hostname) && dOptions[:hostname] \
+      @sHostname   = dOptions.key?(:hostname) && dOptions[:hostname] \
                    ? dOptions[:hostname]    : 'localhost'
-      @iPort       = dOptions.has_key?(:port) && dOptions[:port] \
+      @iPort       = dOptions.key?(:port)     && dOptions[:port] \
                    ? dOptions[:port].to_i   : 443
-      sUsername    = dOptions.has_key?(:username) ? dOptions[:username] : ''
-      sPassword    = dOptions.has_key?(:password) ? dOptions[:password] : ''
-      @sInstance   = dOptions.has_key?(:instance) ? dOptions[:instance] : ''
+      sUsername    = dOptions.key?(:username) ? dOptions[:username] : ''
+      sPassword    = dOptions.key?(:password) ? dOptions[:password] : ''
+      @sInstance   = dOptions.key?(:instance) ? dOptions[:instance] : ''
       @dTypePrefix = { 'B' => 'Story', 'E' => 'Epic' }
       @sUrl        = buildUrl(@sProtocol,@sHostname,@iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
@@ -36,7 +36,7 @@ module VersiononeSdk
 
         elsif xAssetId1 =~ /^([a-zA-Z])-[0-9]+$/
           sAssetTypeAbbr = $1.upcase
-          sAssetType     = @dTypePrefix.has_key?( sAssetTypeAbbr ) \
+          sAssetType     = @dTypePrefix.key?( sAssetTypeAbbr ) \
             ? @dTypePrefix[ sAssetTypeAbbr ] : ''
           xAssetId1.upcase!
           return self.getAssetForTypeAndNumber( sAssetType, xAssetId1 )
@@ -51,7 +51,7 @@ module VersiononeSdk
             if xAssetId1     =~ /^[a-zA-Z]$/
               xAssetId1.upcase!
               sAssetTypeAbbr = xAssetId1
-              sAssetType     = @dTypePrefix.has_key?( sAssetTypeAbbr ) \
+              sAssetType     = @dTypePrefix.key?( sAssetTypeAbbr ) \
                 ? @dTypePrefix[ sAssetTypeAbbr ] : ''
               sAssetNumber   =  xAssetId1 + '-' + xAssetId2.to_s
               sAssetNumber.upcase!

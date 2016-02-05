@@ -4,16 +4,8 @@ module VersiononeSdk
   # VersiononeSdk::Asset class is a JsonDoc::Document subclass that includes
   # the #inflateNames method to add AssetState.Name based on the VersionOne
   # classifications avaiable at: https://community.versionone.com/Developers/Developer-Library/Concepts/Asset_State
-
   class Asset < JsonDoc::Document
     attr_accessor :dSchema
-    def initialize(dValues=nil,dSchema=nil,bDefaultifyDoc=false,bIsStrict=false)
-      @dSchema        = dSchema || self.getDefaultSchema()
-      @bDefaultifyDoc = bDefaultifyDoc ? true : false
-      @bIsStrict      = bIsStrict      ? true : false
-      @dDocument      = self.getDefaultDocument()
-      self.loadInitialValues(dValues)
-    end
 
     def getDefaultSchema()
       dSchema =  {}

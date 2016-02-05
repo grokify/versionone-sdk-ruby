@@ -5,7 +5,7 @@ require 'versionone_sdk/asset'
 module VersiononeSdk
   class ParserXmlAssets
     def initialize(dOptions={})
-      @sUrl = dOptions.has_key?(:url) ? dOptions[:url] : ''
+      @sUrl = dOptions.key?(:url) ? dOptions[:url] : ''
     end
     def getDocsForAssetsXmlPath(sPath=nil)
       if File.exists?(sPath)
@@ -76,7 +76,7 @@ module VersiononeSdk
       if oNodeChild.children.length > 0
         oNodeChild.children.each do |oNodeChildGrand|
           dAttributes = oNodeChildGrand.attributes
-          xxPropVal   = dAttributes.has_key?('idref')    \
+          xxPropVal   = dAttributes.key?('idref')    \
             ? oNodeChildGrand.attribute('idref').value \
             : oNodeChildGrand.text
           xxPropVal = nil if xxPropVal == ''

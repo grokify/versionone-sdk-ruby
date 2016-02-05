@@ -26,13 +26,13 @@ module VersiononeSdk
       yTagType = yTagType.to_sym if yTagType.is_a?(String)
 
       unless yTagType.nil?
-        unless @dTagTypes.has_key?(yTagType)
+        unless @dTagTypes.key?(yTagType)
           raise ArgumentError, "E_BAD_TAG_TYPE: [#{yTagType.to_s}]"
         end
       else
         if sName.nil? || ! sName.kind_of?(String)
           raise ArgumentError, 'E_NO_ATTRIBUTE_NAME'
-        elsif @dRelationships.has_key?(sName)
+        elsif @dRelationships.key?(sName)
           aValues.each do |dValue|
             sAct = dValue[:act]
             if sAct    == 'set'
@@ -99,7 +99,7 @@ module VersiononeSdk
     end
 
     def getXmlBodyForSimpleAttributeUpdate(sName=nil,aValues=[])
-      sValue   = aValues.length>0 && aValues[0].has_key?(:value) \
+      sValue   = aValues.length>0 && aValues[0].key?(:value) \
         ? aValues[0][:value] : nil
       oBuilder = Nokogiri::XML::Builder.new do |xml|
         xml.Asset {
@@ -110,7 +110,7 @@ module VersiononeSdk
     end
 
     def getXmlBodyForSingleRelationship(sName=nil,aValues=[])
-      sValue   = aValues.length>0 && aValues[0].has_key?(:value) \
+      sValue   = aValues.length>0 && aValues[0].key?(:value) \
         ? aValues[0][:value] : nil
       oBuilder = sValue.nil? \
         ? Nokogiri::XML::Builder.new { |xml| xml.Asset { \
