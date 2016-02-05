@@ -1,6 +1,8 @@
 require 'test/unit'
 require 'versionone_sdk'
 
+require 'pp'
+
 class VersiononeSdkTest < Test::Unit::TestCase
   def testSetup
     oAsset  = VersiononeSdk::Asset.new
@@ -13,7 +15,12 @@ class VersiononeSdkTest < Test::Unit::TestCase
   end
 
   def testAsset
-    oAsset = VersiononeSdk::Asset.new({hello: "world"},{},false,false)
-    assert_equal "world", oAsset.getAttr(:hello)
+    oAsset = VersiononeSdk::Asset.new({hello: 'world'},{},false,false)
+    assert_equal 'world', oAsset.getAttr(:hello)
+
+    oAsset.setProp(:AssetState, '128')
+    oAsset.inflateNames()
+
+    assert_equal 'Closed', oAsset.getProp(:'AssetState.Name')
   end
 end

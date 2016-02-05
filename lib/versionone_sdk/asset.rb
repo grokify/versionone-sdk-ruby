@@ -7,6 +7,11 @@ module VersiononeSdk
   class Asset < JsonDoc::Document
     attr_accessor :dSchema
 
+    def initialize(dValues=nil,dSchema=nil,bDefaultifyDoc=false,bIsStrict=true,opts={})
+      opts[:bUseDeepKeys] = false
+      super(dValues, dSchema, bDefaultifyDoc, bIsStrict, opts)
+    end
+
     def getDefaultSchema()
       dSchema =  {}
       return dSchema
@@ -36,11 +41,11 @@ module VersiononeSdk
         208 => 'Broken Down (Dead)',
         255 => 'Deleted (Dead)'
       }
-      if @dDocument.has_key?(:AssetState)
+      if @dDocument.key?(:AssetState)
         sAssetState = @dDocument[:AssetState]
         if sAssetState.is_a?(String) && sAssetState =~ /^[0-9]+$/
           iAssetState = sAssetState.to_i
-          if dAssetState.has_key?(iAssetState)
+          if dAssetState.key?(iAssetState)
             sAssetStateName = dAssetState[iAssetState]
             self.setProp(:'AssetState.Name',sAssetStateName)
           end

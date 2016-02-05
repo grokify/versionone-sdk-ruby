@@ -6,25 +6,13 @@ Gem::Specification.new do |s|
   s.author      = 'John Wang'
   s.email       = 'john@johnwang.com'
   s.homepage    = 'http://johnwang.com/'
-  s.date        = '2016-01-15'
+  s.date        = '2016-02-05'
   s.summary     = 'VersionOne SDK - A Ruby SDK for the VersionOne REST API'
   s.license     = 'MIT'
   s.description = 'A Ruby SDK for the VersionOne REST API'
   s.licenses    = ['MIT']
-  s.files       = [
-    'CHANGELOG.md',
-    'LICENSE.txt',
-    'README.md',
-    'Rakefile',
-    'VERSION',
-    'lib/versionone_sdk.rb',
-    'lib/versionone_sdk/asset.rb',
-    'lib/versionone_sdk/client.rb',
-    'lib/versionone_sdk/parser_xml_assets.rb',
-    'lib/versionone_sdk/update.rb',
-    'lib/versionone_sdk/version.rb',
-    'test/test_setup.rb'
-  ]
+  s.files       = Dir['lib/**/**/*'] + Dir['test/**/*'] \
+                + Dir['[A-Z]*'].grep(/^[A-Z]/).select {|s|/Gemfile\.lock/ !~ s}
   s.add_dependency 'faraday', '~> 0', '>= 0'
   s.add_dependency 'jsondoc', '~> 0', '>= 0.0.4'
   s.add_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
