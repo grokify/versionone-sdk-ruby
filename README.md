@@ -58,7 +58,6 @@ params = {
 v1client = VersiononeSdk::Client.new(params)
     
 # Retrieve an array of VersiononeSdk::Asset objects
-
 assets   = v1client.getAssets('Scope')
 
 assets.each do |asset|
@@ -67,33 +66,33 @@ end
 
 # Retrieve a single asset using an Asset OID Token
 # Returns a VersiononeSdk::Asset object
-asset = v1client.getAsset("Story:1")
-asset = v1client.getAsset("Story",1)
+asset = v1client.getAsset('Story:1')
+asset = v1client.getAsset('Story',1)
 
 # Retrieve a single asset using an Asset Number
-asset = v1client.getAsset("B-1")
-asset = v1client.getAsset("B",1)
+asset = v1client.getAsset('B-1')
+asset = v1client.getAsset('B',1)
 
 # Updating an asset with a simple attribute
 # Returns a Faraday::Response object
-v1client.updateAsset("Member",20,"Phone","555-555-1212")
-v1client.updateAsset("Member",20,"Phone",{:value=>"555-555-1212",:act=>"set"})
-v1client.updateAsset("Member",20,"Phone",{:value=>"555-555-1212",:act=>"set"},\
+v1client.updateAsset('Member',20,'Phone','555-555-1212')
+v1client.updateAsset('Member',20,'Phone',{:value=>'555-555-1212',:act=>'set'})
+v1client.updateAsset('Member',20,'Phone',{:value=>'555-555-1212',:act=>'set'},\
   :simple_attribute
 )
 
 # Updating an asset with a single-value relationship:
-v1client.updateAsset("Scope",0,"Owner","Member:20")
-v1client.updateAsset("Scope",0,"Owner",{:value=>"Member:20",:act=>"set"})
-v1client.updateAsset("Scope",0,"Owner",{:value=>"Member:20",:act=>"set"},:single_relationship)
+v1client.updateAsset('Scope',0,'Owner','Member:20')
+v1client.updateAsset('Scope',0,'Owner',{:value=>'Member:20',:act=>'set'})
+v1client.updateAsset('Scope',0,'Owner',{:value=>'Member:20',:act=>'set'},:single_relationship)
 
 # Updating an asset with a multi-value relationship: adding members
-v1client.updateAsset("Scope",0,"Members",["Member:1000","Member:1001"],:multi_relationship)
+v1client.updateAsset('Scope',0,'Members',['Member:1000','Member:1001'],:multi_relationship)
 
 # Updating an asset with a multi-value relationship: adding and removing members
-v1client.updateAsset("Scope",0,"Members",[       \
-  { :value => "Member:1000", :act => "add" },    \
-  { :value => "Member:1001", :act => "remove " } \
+v1client.updateAsset('Scope',0,'Members',[      \
+  { :value => 'Member:1000', :act => 'add' },   \
+  { :value => 'Member:1001', :act => 'remove' } \
 ],:multi_relationship)
 ```
 
