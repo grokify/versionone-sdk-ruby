@@ -135,6 +135,14 @@ VersionOne API Documentation for Updating an Asset
 
 * https://community.versionone.com/Developers/Developer-Library/Recipes/Update_an_Asset
 
+## Contributing
+
+1. Fork it ( http://github.com/grokify/versionone-sdk-ruby/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
 ## Copyright and License
 
 VersiononeSdk &copy; 2014-2016 by [John Wang](mailto:johncwang@gmail.com).
