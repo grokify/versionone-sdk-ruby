@@ -129,7 +129,7 @@ Project Repo
 
 VersionOne API Documentation
 
-* http://community.versionone.com/Developers/Developer-Library/Documentation/API
+* http://community.versionone.com/Developers/Developer-Library/Documentation
 
 VersionOne API Documentation for Updating an Asset
 
