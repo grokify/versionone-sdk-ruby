@@ -9,17 +9,15 @@ module VersiononeSdk
 
     def initialize(dOptions={})
       iPort        = iPort.to_i if iPort.is_a?(String)
-      @sProtocol   = dOptions.key?(:protocol) && dOptions[:protocol] \
-                   ? dOptions[:protocol]    : 'https'
-      @sHostname   = dOptions.key?(:hostname) && dOptions[:hostname] \
-                   ? dOptions[:hostname]    : 'localhost'
-      @iPort       = dOptions.key?(:port)     && dOptions[:port] \
-                   ? dOptions[:port].to_i   : 443
-      sUsername    = dOptions.key?(:username) ? dOptions[:username] : ''
-      sPassword    = dOptions.key?(:password) ? dOptions[:password] : ''
-      @sInstance   = dOptions.key?(:instance) ? dOptions[:instance] : ''
-      @dTypePrefix = { 'B' => 'Story', 'E' => 'Epic' }
-      @sUrl        = buildUrl(@sProtocol,@sHostname,@iPort)
+      @sProtocol   = dOptions[:protocol] || 'https'
+      @sHostname   = dOptions[:hostname] || 'localhost'
+      @iPort       = dOptions.key?(:port) && dOptions[:port] \
+                   ? dOptions[:port].to_i : 443
+      sUsername    = dOptions[:username] || ''
+      sPassword    = dOptions[:password] || ''
+      @sInstance   = dOptions[:instance] || ''
+      @dTypePrefix = {'B' => 'Story', 'E' => 'Epic'}
+      @sUrl        = buildUrl(@sProtocol, @sHostname, @iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
       @oFaraday.basic_auth(sUsername, sPassword)
       @oUpdate     = VersiononeSdk::Update.new(self)
