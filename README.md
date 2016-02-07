@@ -23,6 +23,8 @@ It currently offers the following capabilities:
 2. Ability to query Assets transparently using Asset OID Tokens (e.g. `Story:1`) or Asset Numbers (e.g. `B-1`).
 3. Ability to update Assets using Ruby without needing to manually create XML.
 
+Note: This SDK doesn't currently support NTLM authentication used with on-premise VersionOne deployments. An approach for this is to use [`httpclient`](https://rubygems.org/gems/httpclient) and [`rubyntlm`](https://rubygems.org/gems/rubyntlm).
+
 ## Installation
 
 ### Via Bundler
