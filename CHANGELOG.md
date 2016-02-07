@@ -1,6 +1,8 @@
 CHANGELOG
 ---------
-- **2015-09-14**: 0.1.1
+- **2016-02-05**: 0.1.2
+  - Update `VersiononeSdk::Asset` to update call to `JsonDoc::Document`
+- **2014-09-14**: 0.1.1
   - Update `README.md`
   - Add Travis CI, Code Climate, Coveralls support
 - **2014-03-24**: 0.1.0
