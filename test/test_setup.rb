@@ -23,4 +23,24 @@ class VersiononeSdkTest < Test::Unit::TestCase
 
     assert_equal 'Closed', oAsset.getProp(:'AssetState.Name')
   end
+
+  def testClient
+    oClient = VersiononeSdk::Client.new(instance: 'Test')
+    assert_equal 'https://localhost:443/Test/rest-1.v1/Data/',
+                    oClient.getUrlForAssets
+    assert oClient.oFaraday.ssl.verify
+
+    oClient = VersiononeSdk::Client.new(instance: 'Test', ssl_verify: false)
+    assert !(oClient.oFaraday.ssl.verify)
+
+    oClient = VersiononeSdk::Client.new(protocol: 'http', user: 'user',
+                password: 'pass', port: 80, appauth: '', instance: 'Test')
+    assert_equal 'http://localhost/Test/rest-1.v1/Data/', oClient.getUrlForAssets
+    assert_match /\ABasic /, oClient.oFaraday.headers['Authorization']
+
+    sAppAuth = 'some_string_generated_from_version_one'
+    oClient = VersiononeSdk::Client.new(protocol: 'https', port: 443,
+                appauth: sAppAuth, instance: Test)
+    assert_equal "Bearer #{sAppAuth}", oClient.oFaraday.headers['Authorization']
+  end
 end
