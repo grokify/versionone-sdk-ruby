@@ -8,18 +8,27 @@ module VersiononeSdk
     attr_accessor :sInstance
 
     def initialize(dOptions={})
-      iPort        = iPort.to_i if iPort.is_a?(String)
+      # iPort        = iPort.to_i if iPort.is_a?(String) # dead code in master?
       @sProtocol   = dOptions[:protocol] || 'https'
       @sHostname   = dOptions[:hostname] || 'localhost'
       @iPort       = dOptions.key?(:port) && dOptions[:port] \
                    ? dOptions[:port].to_i : 443
       sUsername    = dOptions[:username] || ''
       sPassword    = dOptions[:password] || ''
+      # VersionOne provides a mechanism for generating an authentication token
+      sAppAuth     = dOptions[:appauth]  || ''
       @sInstance   = dOptions[:instance] || ''
       @dTypePrefix = {'B' => 'Story', 'E' => 'Epic'}
       @sUrl        = buildUrl(@sProtocol, @sHostname, @iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
-      @oFaraday.basic_auth(sUsername, sPassword)
+      @oFaraday.ssl.verify = dOptions[:ssl_verify].to_s.match(/false/i) \
+                   ? false : true
+     if sAppAuth.empty?
+        @oFaraday.basic_auth(sUsername, sPassword)
+      else
+        # could also patch Faraday to have a method similar to basic_auth
+        @oFaraday.headers["Authorization"]  = "Bearer #{sAppAuth}"
+      end
       @oUpdate     = VersiononeSdk::Update.new self
     end
 
@@ -114,6 +123,8 @@ module VersiononeSdk
 
     private
 
+    # builder has one set of defaults, but initializer has different defaults...
+    # initializer will not allow these to pass through empty...
     def buildUrl(sProtocol = 'http', sHostname = 'localhost', iPort = 80)
       if sHostname.nil?
         sHostname = 'localhost'
