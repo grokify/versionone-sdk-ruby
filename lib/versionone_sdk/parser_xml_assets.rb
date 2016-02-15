@@ -14,9 +14,9 @@ module VersiononeSdk
       return []
     end
     def getDocsForAssetsXml(xAssets=nil)
-      oXml   = Nokogiri::XML::Document.parse(xAssets)
+      oXml = Nokogiri::XML::Document.parse(xAssets)
       oBlock = oXml.xpath("//Assets/Asset")
-      aDocs  = []
+      aDocs = []
       oBlock.map do |oNodeAsset|
         oAsset = self.getJsondocForXmlAssetNode( oNodeAsset )
         unless oAsset.nil?
@@ -26,7 +26,7 @@ module VersiononeSdk
       return aDocs
     end
     def getDocForAssetXml(xAsset=nil)
-      oXml   = Nokogiri::XML::Document.parse(xAsset)
+      oXml = Nokogiri::XML::Document.parse(xAsset)
       oAsset = self.getJsondocForXmlAssetNode( oXml.root )
       return oAsset
     end
@@ -58,7 +58,7 @@ module VersiononeSdk
       oNodeAsset.children.each do |oNodeChild|
         if oNodeChild.name == 'Attribute' || oNodeChild.name == 'Relation'
           if oNodeChild.attribute('name')
-            yPropKey  = oNodeChild.attribute('name').to_s.to_sym
+            yPropKey = oNodeChild.attribute('name').to_s.to_sym
             xxPropVal = getAssetNodeChildPropVal( oNodeChild )
             oAsset.setProp(yPropKey,xxPropVal)
           end
@@ -90,9 +90,9 @@ module VersiononeSdk
           xxPropVal = nil
         end
       else
-        xxPropVal   = oNodeChild.text
+        xxPropVal = oNodeChild.text
       end
-      xxPropVal     = nil if xxPropVal == ''
+      xxPropVal = nil if xxPropVal == ''
       return xxPropVal
     end
   end

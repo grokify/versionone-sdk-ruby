@@ -3,8 +3,8 @@ require 'nokogiri'
 module VersiononeSdk
   class Update
     def initialize(oClient=nil)
-      @oClient        = oClient
-      @dTagTypes      = {simple_attribute: 1, single_relationship: 1, multi_relationship: 1}
+      @oClient = oClient
+      @dTagTypes = {simple_attribute: 1, single_relationship: 1, multi_relationship: 1}
       @sRelationships = 'BuildProjects,Owner,Parent,Schedule,Scheme,SecurityScope,Status,TestSuite'
       @dRelationships = Hash[@sRelationships.split(',').collect {|v| [v,1]}]
     end
