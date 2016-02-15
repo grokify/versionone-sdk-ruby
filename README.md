@@ -49,6 +49,7 @@ This gem uses `nokogiri` which requires Ruby >= 1.9.2.
 ```ruby
 require 'versionone_sdk'
 
+# Authorizing using Basic Authentication
 params = {
   hostname: 'www1.v1host.com',
   instance: 'myinstance',
@@ -57,9 +58,18 @@ params = {
   port: 443,
   protocol: 'https'
 }
+v1client = VersiononeSdk::Client.new params
 
-v1client = VersiononeSdk::Client.new(params)
-    
+# Authorizing using Access Token Authentication
+params = {
+  hostname: 'www1.v1host.com',
+  instance: 'myinstance',
+  access_token: 'myaccesstoken',
+  port: 443,
+  protocol: 'https'
+}
+v1client = VersiononeSdk::Client.new params
+
 # Retrieve an array of VersiononeSdk::Asset objects
 assets   = v1client.getAssets('Scope')
 
@@ -136,6 +146,10 @@ VersionOne API Documentation
 VersionOne API Documentation for Updating an Asset
 
 * https://community.versionone.com/Developers/Developer-Library/Recipes/Update_an_Asset
+
+VersionOne Developer Google Group
+
+* https://groups.google.com/forum/#!forum/versionone-dev
 
 ## Contributing
 

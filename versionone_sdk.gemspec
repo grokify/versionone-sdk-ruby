@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.author      = 'John Wang'
   s.email       = 'john@johnwang.com'
   s.homepage    = 'http://johnwang.com/'
-  s.date        = '2016-02-05'
+  s.date        = '2016-02-14'
   s.summary     = 'VersionOne SDK - A Ruby SDK for the VersionOne REST API'
   s.license     = 'MIT'
   s.description = 'A Ruby SDK for the VersionOne REST API'

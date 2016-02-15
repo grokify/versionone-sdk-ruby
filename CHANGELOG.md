@@ -1,5 +1,8 @@
 CHANGELOG
 ---------
+- **2015-02-13**: 0.2.0
+  - Add Access Token Authentication handling. More info at: https://community.versionone.com/Developers/Developer-Library/Documentation/API_Authentication/Access_Token_Authentication
+  - Update client's default protocol, hostname and port to use constants.
 - **2016-02-05**: 0.1.2
   - Update `VersiononeSdk::Asset` to update call to `JsonDoc::Document`
 - **2015-09-14**: 0.1.1

@@ -1,8 +1,6 @@
 require 'test/unit'
 require 'versionone_sdk'
 
-require 'pp'
-
 class VersiononeSdkTest < Test::Unit::TestCase
   def testSetup
     oAsset  = VersiononeSdk::Asset.new
@@ -34,13 +32,13 @@ class VersiononeSdkTest < Test::Unit::TestCase
     assert !(oClient.oFaraday.ssl.verify)
 
     oClient = VersiononeSdk::Client.new(protocol: 'http', user: 'user',
-                password: 'pass', port: 80, appauth: '', instance: 'Test')
+                password: 'pass', port: 80, access_token: '', instance: 'Test')
     assert_equal 'http://localhost/Test/rest-1.v1/Data/', oClient.getUrlForAssets
     assert_match /\ABasic /, oClient.oFaraday.headers['Authorization']
 
-    sAppAuth = 'some_string_generated_from_version_one'
+    sAccessToken = 'some_string_generated_from_version_one'
     oClient = VersiononeSdk::Client.new(protocol: 'https', port: 443,
-                appauth: sAppAuth, instance: Test)
-    assert_equal "Bearer #{sAppAuth}", oClient.oFaraday.headers['Authorization']
+                access_token: sAccessToken, instance: Test)
+    assert_equal "Bearer #{sAccessToken}", oClient.oFaraday.headers['Authorization']
   end
 end

@@ -4,7 +4,7 @@ module VersiononeSdk
   class Update
     def initialize(oClient=nil)
       @oClient        = oClient
-      @dTagTypes      = {:simple_attribute=>1,:single_relationship=>1,:multi_relationship=>1}
+      @dTagTypes      = {simple_attribute: 1, single_relationship: 1, multi_relationship: 1}
       @sRelationships = 'BuildProjects,Owner,Parent,Schedule,Scheme,SecurityScope,Status,TestSuite'
       @dRelationships = Hash[@sRelationships.split(',').collect {|v| [v,1]}]
     end
@@ -18,9 +18,7 @@ module VersiononeSdk
     # +xxValues+:: values to be updated which can be a variety of formats.
     # +yTagType+:: A optional symbol to identify the type of attribute, e.g.
     # :simple_attribute, :single_relationship, or :multi_relationship
-
     def updateAsset(sAssetType=nil,sAssetOid=nil,sName=nil,xxValues=nil,yTagType=nil)
-
       aValues  = normalizeValues(xxValues)
       # Validate Tag Type
       yTagType = yTagType.to_sym if yTagType.is_a?(String)
@@ -76,14 +74,14 @@ module VersiononeSdk
       aValues = []
 
       if xxValues.is_a?(String)
-        aValues = [{:value => xxValues,:act=>'set'}]
+        aValues = [{value: xxValues, act: 'set'}]
       elsif xxValues.is_a?(Hash)
         aValues = [xxValues]
       elsif xxValues.is_a?(Array)
         xxValues.each do |xxSubValue|
           if xxSubValue.is_a?(String)
             sAct = xxValues.length > 1 ? 'add' : 'set'
-            aValues.push({:value=>xxSubValue,:act=>sAct})
+            aValues.push({value: xxSubValue, act: sAct})
           elsif xxSubValue.is_a?(Hash)
             aValues.push(xxSubValue)
           end
@@ -103,7 +101,7 @@ module VersiononeSdk
         ? aValues[0][:value] : nil
       oBuilder = Nokogiri::XML::Builder.new do |xml|
         xml.Asset {
-          xml.Attribute(sValue, :name => sName, :act => 'set')
+          xml.Attribute(sValue, name: sName, act: 'set')
         }
       end
       return oBuilder.to_xml
@@ -114,11 +112,11 @@ module VersiononeSdk
         ? aValues[0][:value] : nil
       oBuilder = sValue.nil? \
         ? Nokogiri::XML::Builder.new { |xml| xml.Asset { \
-            xml.Relation(:name=>sName,:act=>'set')
+            xml.Relation(name: sName, act: 'set')
         } }
         : Nokogiri::XML::Builder.new { |xml| xml.Asset { \
-            xml.Relation(:name=>sName,:act=>'set') {
-              xml.Asset(:idref=>sValue)
+            xml.Relation(name: sName, act: 'set') {
+              xml.Asset(idref: sValue)
             }
         } }
       return oBuilder.to_xml
@@ -127,12 +125,12 @@ module VersiononeSdk
     def getXmlBodyForMultiRelationship(sName=nil,aValues=[])
       oBuilder = aValues.length == 0 \
         ? Nokogiri::XML::Builder.new { |xml| xml.Asset { \
-            xml.Relation(:name=>sName,:act=>'set')
+            xml.Relation(name: sName, act: 'set')
         } }
         : Nokogiri::XML::Builder.new { |xml| xml.Asset { \
-            xml.Relation(:name=>sName) {
+            xml.Relation(name: sName) {
               aValues.each do |dValue|
-                xml.Asset(:idref=>dValue[:value],:act=>dValue[:act])
+                xml.Asset(idref: dValue[:value], act: dValue[:act])
               end
             }
         } }

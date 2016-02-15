@@ -4,26 +4,29 @@ require 'versionone_sdk/parser_xml_assets'
 
 module VersiononeSdk
   class Client
+    DEFAULT_PROTOCOL = 'https'
+    DEFAULT_HOSTNAME = 'localhost'
+    DEFAULT_PORT = 443
+
     attr_accessor :oFaraday
     attr_accessor :sInstance
 
-    def initialize(dOptions={})
-      # iPort        = iPort.to_i if iPort.is_a?(String) # dead code in master?
-      @sProtocol   = dOptions[:protocol] || 'https'
-      @sHostname   = dOptions[:hostname] || 'localhost'
-      @iPort       = dOptions.key?(:port) && dOptions[:port] \
-                   ? dOptions[:port].to_i : 443
-      sUsername    = dOptions[:username] || ''
-      sPassword    = dOptions[:password] || ''
-      # VersionOne provides a mechanism for generating an authentication token
-      sAppAuth     = dOptions[:appauth]  || ''
-      @sInstance   = dOptions[:instance] || ''
+    def initialize(opts = {})
+      @sProtocol   = opts[:protocol] || DEFAULT_PROTOCOL
+      @sHostname   = opts[:hostname] || DEFAULT_HOSTNAME
+      @iPort       = opts.key?(:port) && opts[:port] \
+                   ? opts[:port].to_i : DEFAULT_PORT
+      sUsername    = opts[:username] || ''
+      sPassword    = opts[:password] || ''
+      # VersionOne provides a mechanism for generating an access token
+      sAppAuth     = opts[:access_token] || ''
+      @sInstance   = opts[:instance] || ''
       @dTypePrefix = {'B' => 'Story', 'E' => 'Epic'}
       @sUrl        = buildUrl(@sProtocol, @sHostname, @iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
-      @oFaraday.ssl.verify = dOptions[:ssl_verify].to_s.match(/false/i) \
+      @oFaraday.ssl.verify = opts[:ssl_verify].to_s.match(/false/i) \
                    ? false : true
-     if sAppAuth.empty?
+      if sAppAuth.empty?
         @oFaraday.basic_auth(sUsername, sPassword)
       else
         # could also patch Faraday to have a method similar to basic_auth
@@ -118,14 +121,12 @@ module VersiononeSdk
     end
 
     def updateAsset(sAssetType=nil,sAssetOid=nil,sName=nil,xxValues=nil,yTagType=nil)
-      return @oUpdate.updateAsset(sAssetType,sAssetOid,sName,xxValues,yTagType)
+      return @oUpdate.updateAsset(sAssetType, sAssetOid, sName, xxValues, yTagType)
     end
 
     private
 
-    # builder has one set of defaults, but initializer has different defaults...
-    # initializer will not allow these to pass through empty...
-    def buildUrl(sProtocol = 'http', sHostname = 'localhost', iPort = 80)
+    def buildUrl(sProtocol = DEFAULT_PROTOCOL, sHostname = DEFAULT_HOSTNAME, iPort = DEFAULT_PORT)
       if sHostname.nil?
         sHostname = 'localhost'
       elsif sHostname.is_a?(String)
