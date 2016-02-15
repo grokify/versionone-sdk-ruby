@@ -1,5 +1,4 @@
-require 'test/unit'
-require 'versionone_sdk'
+require './test/test_base.rb'
 
 class VersiononeSdkTest < Test::Unit::TestCase
   def testSetup
