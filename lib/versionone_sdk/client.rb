@@ -19,18 +19,18 @@ module VersiononeSdk
       sUsername    = opts[:username] || ''
       sPassword    = opts[:password] || ''
       # VersionOne provides a mechanism for generating an access token
-      sAppAuth     = opts[:access_token] || ''
+      sAccessToken = opts[:access_token] || ''
       @sInstance   = opts[:instance] || ''
       @dTypePrefix = {'B' => 'Story', 'E' => 'Epic'}
       @sUrl        = buildUrl(@sProtocol, @sHostname, @iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
       @oFaraday.ssl.verify = opts[:ssl_verify].to_s.match(/false/i) \
                    ? false : true
-      if sAppAuth.empty?
+      if sAccessToken.empty?
         @oFaraday.basic_auth(sUsername, sPassword)
       else
         # could also patch Faraday to have a method similar to basic_auth
-        @oFaraday.headers["Authorization"]  = "Bearer #{sAppAuth}"
+        @oFaraday.headers['Authorization']  = "Bearer #{sAccessToken}"
       end
       @oUpdate     = VersiononeSdk::Update.new self
     end
