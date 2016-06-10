@@ -16,5 +16,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday', '~> 0', '>= 0'
   s.add_dependency 'jsondoc', '~> 0.1', '>= 0.1.2'
   s.add_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
+
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'test-unit'
+  s.add_development_dependency 'coveralls', '~> 0.8.13'
   s.require_path = 'lib'
 end
