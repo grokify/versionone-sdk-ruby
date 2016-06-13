@@ -70,6 +70,13 @@ params = {
 }
 v1client = VersiononeSdk::Client.new params
 
+# Different asset types can be defined and passed in during instantiation
+params = {
+  ...
+  type_prefixes: { 'R' => 'Request', 'D' => 'Defect', 'B' => 'Story', 'E' => 'Epic' }
+}
+v1client = VersiononeSdk::Client.new params
+
 # Retrieve an array of VersiononeSdk::Asset objects
 assets   = v1client.getAssets('Scope')
 

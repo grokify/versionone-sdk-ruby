@@ -10,6 +10,7 @@ module VersiononeSdk
 
     attr_accessor :oFaraday
     attr_accessor :sInstance
+    attr_accessor :dTypePrefix
 
     def initialize(opts = {})
       @sProtocol   = opts[:protocol] || DEFAULT_PROTOCOL
@@ -21,7 +22,7 @@ module VersiononeSdk
       # VersionOne provides a mechanism for generating an access token
       sAccessToken = opts[:access_token] || ''
       @sInstance   = opts[:instance] || ''
-      @dTypePrefix = {'B' => 'Story', 'E' => 'Epic'}
+      @dTypePrefix = opts[:type_prefixes] || {'B' => 'Story', 'E' => 'Epic', 'D' => 'Defect'}
       @sUrl        = buildUrl(@sProtocol, @sHostname, @iPort)
       @oFaraday    = Faraday::Connection.new url: @sUrl
       @oFaraday.ssl.verify = opts[:ssl_verify].to_s.match(/false/i) \
