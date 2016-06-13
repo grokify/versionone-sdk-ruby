@@ -1,5 +1,8 @@
 CHANGELOG
 ---------
+- **2016-06-10**: 0.2.1
+  - Add raise asset not found error
+  - Update `Gemfile` to use `gemspec`
 - **2016-02-16**: 0.2.0
   - Add Access Token Authentication handling from pccasto. More info at: https://community.versionone.com/Developers/Developer-Library/Documentation/API_Authentication/Access_Token_Authentication
   - Update client's default protocol, hostname and port to use constants.

@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.author      = 'John Wang'
   s.email       = 'john@johnwang.com'
   s.homepage    = 'http://johnwang.com/'
-  s.date        = '2016-02-16'
+  s.date        = '2016-06-10'
   s.summary     = 'VersionOne SDK - A Ruby SDK for the VersionOne REST API'
   s.license     = 'MIT'
   s.description = 'A Ruby SDK for the VersionOne REST API'
@@ -16,5 +16,10 @@ Gem::Specification.new do |s|
   s.add_dependency 'faraday', '~> 0', '>= 0'
   s.add_dependency 'jsondoc', '~> 0.1', '>= 0.1.2'
   s.add_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
+
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'simplecov'
+  s.add_development_dependency 'test-unit'
+  s.add_development_dependency 'coveralls', '~> 0.8.13'
   s.require_path = 'lib'
 end
