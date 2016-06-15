@@ -79,8 +79,7 @@ module VersiononeSdk
       sUrl = self.getUrlForAssets( sAssetType, sAssetOid )
       oRes = @oFaraday.get sUrl
       oParser = VersiononeSdk::ParserXmlAssets.new({url: @sUrl})
-      aDoc = oParser.getDocForAssetXml( oRes.body )
-      return aDoc
+      return oParser.getDocForAssetXml( oRes.body )
     end
 
     def getAssetForTypeAndNumber(sAssetType = nil, sAssetNumber = nil)
@@ -94,20 +93,17 @@ module VersiononeSdk
     def getAssets(sAssetType = nil, xIds = nil)
       oRes = self.getAssetsXml(sAssetType,xIds)
       oParser = VersiononeSdk::ParserXmlAssets.new({url: @sUrl})
-      aDocs = oParser.getDocsForAssetsXml( oRes.body )
-      return aDocs
+      return oParser.getDocsForAssetsXml( oRes.body )
     end
 
     def getAssetsXml(sAssetType = nil, xIds = nil)
       sUrl = self.getUrlForAssets(sAssetType)
-      oRes = @oFaraday.get sUrl
-      return oRes
+      return @oFaraday.get sUrl
     end
 
     def getUrlForAssetTypeAndNumber(sAssetType = nil, sAssetNumber = nil)
       aUrl = [ @sUrl, @sInstance, 'rest-1.v1/Data',sAssetType + %Q!?where=Number="#{sAssetNumber}"!]
-      sUrl = aUrl.join('/')
-      return sUrl
+      return aUrl.join('/')
     end
 
     def getUrlForAssets(sAssetType = nil, sAssetOid = nil)
@@ -117,8 +113,7 @@ module VersiononeSdk
       elsif sAssetOid.kind_of?(String) && sAssetOid =~ /^[0-9]+$/
         aUrl.push sAssetOid
       end
-      sUrl = aUrl.join('/')
-      return sUrl
+      return aUrl.join('/')
     end
 
     def updateAsset(sAssetType=nil,sAssetOid=nil,sName=nil,xxValues=nil,yTagType=nil)
