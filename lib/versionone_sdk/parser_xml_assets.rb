@@ -62,10 +62,9 @@ module VersiononeSdk
             xxPropVal = getAssetNodeChildPropVal( oNodeChild )
             oAsset.setProp(yPropKey,xxPropVal)
           end
+        elsif oNodeChild.name == 'Message' && oNodeChild.text == 'Not Found'
+          raise RuntimeError, "E_ASSET_NOT_FOUND #{oNodeAsset.attribute('href').value}"
         else
-          if oNodeChild.name == 'Message' && oNodeChild.text == 'Not Found'
-            raise RuntimeError, "E_ASSET_NOT_FOUND #{oNodeAsset.attribute('href').value}"
-          end
           raise RuntimeError, "E_UNKNOWN_ASSET_NODE_NAME #{oNodeChild.name}"
         end
       end

@@ -39,5 +39,11 @@ class VersiononeSdkTest < Test::Unit::TestCase
     oClient = VersiononeSdk::Client.new(protocol: 'https', port: 443,
                 access_token: sAccessToken, instance: Test)
     assert_equal "Bearer #{sAccessToken}", oClient.oFaraday.headers['Authorization']
+
+    oClient = VersiononeSdk::Client.new(instance: 'Test')
+    assert_equal({'B' => 'Story', 'E' => 'Epic', 'D' => 'Defect'}, oClient.dTypePrefix)
+
+    oClient = VersiononeSdk::Client.new(instance: 'Test', type_prefixes: { 'T' => 'Test' })
+    assert_equal({ 'T' => 'Test'}, oClient.dTypePrefix)
   end
 end
