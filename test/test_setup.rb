@@ -33,7 +33,7 @@ class VersiononeSdkTest < Test::Unit::TestCase
     oClient = VersiononeSdk::Client.new(protocol: 'http', user: 'user',
                 password: 'pass', port: 80, access_token: '', instance: 'Test')
     assert_equal 'http://localhost/Test/rest-1.v1/Data/', oClient.getUrlForAssets
-    assert_match /\ABasic /, oClient.oFaraday.headers['Authorization']
+    assert_match(/\ABasic /, oClient.oFaraday.headers['Authorization'])
 
     sAccessToken = 'some_string_generated_from_version_one'
     oClient = VersiononeSdk::Client.new(protocol: 'https', port: 443,

@@ -78,21 +78,22 @@ module VersiononeSdk
     def getAssetForTypeAndOid(sAssetType = nil, sAssetOid = nil)
       sUrl = self.getUrlForAssets( sAssetType, sAssetOid )
       oRes = @oFaraday.get sUrl
-      oParser = VersiononeSdk::ParserXmlAssets.new({:url => @sUrl})
+      oParser = VersiononeSdk::ParserXmlAssets.new({url: @sUrl})
       aDoc = oParser.getDocForAssetXml( oRes.body )
+      return aDoc
     end
 
     def getAssetForTypeAndNumber(sAssetType = nil, sAssetNumber = nil)
       sUrl = self.getUrlForAssetTypeAndNumber( sAssetType, sAssetNumber )
       oRes = @oFaraday.get sUrl
-      oParser = VersiononeSdk::ParserXmlAssets.new({:url => @sUrl})
+      oParser = VersiononeSdk::ParserXmlAssets.new({url: @sUrl})
       aDocs = oParser.getDocsForAssetsXml( oRes.body )
       return aDocs[0]
     end
 
     def getAssets(sAssetType = nil, xIds = nil)
       oRes = self.getAssetsXml(sAssetType,xIds)
-      oParser = VersiononeSdk::ParserXmlAssets.new({:url => @sUrl})
+      oParser = VersiononeSdk::ParserXmlAssets.new({url: @sUrl})
       aDocs = oParser.getDocsForAssetsXml( oRes.body )
       return aDocs
     end
