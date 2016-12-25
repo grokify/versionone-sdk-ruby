@@ -4,7 +4,7 @@ File.read(lib_file) =~ /\bVERSION\s*=\s*["'](.+?)["']/
 version = $1
 
 Gem::Specification.new do |s|
-  s.name        = 'versionone_sdk'
+  s.name        = lib
   s.version     = version
   s.author      = 'John Wang'
   s.email       = 'john@johnwang.com'
@@ -21,9 +21,9 @@ Gem::Specification.new do |s|
   s.add_dependency 'jsondoc', '~> 0.1', '>= 0.1.2'
   s.add_dependency 'nokogiri', '~> 1.5', '>= 1.5.0'
 
-  s.add_development_dependency 'rake'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'test-unit'
+  s.add_development_dependency 'rake', '~> 12'
+  s.add_development_dependency 'simplecov', '~> 0'
+  s.add_development_dependency 'test-unit', '~> 3'
   s.add_development_dependency 'coveralls', '~> 0.8.13'
   s.require_path = 'lib'
 end
